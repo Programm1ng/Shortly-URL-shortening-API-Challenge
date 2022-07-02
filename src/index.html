@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- displays site properly based on user's device -->
+
+   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+   <title>Frontend Mentor | Shortly URL shortening API Challenge</title>
+</head>
+
+<body class="">
+
+   <!-- Header -->
+   <header class="h-16">
+
+      <div class="header fixed bg-white p-5 w-full z-50">
+
+         <div class="relative grid grid-rows-[auto_auto] max-w-6xl mx-auto md:grid-cols-[auto_1fr]">
+
+            <div class="flex justify-between items-center h-full md:row-start-1 md:mr-8">
+
+               <img class="h-7" src="./images/logo.svg" alt="">
+
+               <button class="openMenuButton w-7 md:hidden">
+                  <i class="fa-solid fa-bars text-2xl text-neutral-grayish-violet"></i>
+               </button>
+
+               <button class="closeMenuButton hidden w-7 md:hidden">
+                  <i class="fa-solid fa-xmark text-2xl text-neutral-grayish-violet"></i>
+               </button>
+
+            </div>
+
+            <div
+               class="mobile-menu hidden absolute row-start-2 flex-col items-center gap-y-6 font-poppins font-semibold text-lg bg-primary-dark-violet rounded-lg px-5 py-8 text-white justify-self-end max-w-sm w-full mt-3 md:flex md:flex-row md:row-start-1 md:bg-white md:text-gray-600 md:py-0 md:max-w-none md:static md:gap-x-8 md:font-normal md:text-base md:mt-0 md:px-0">
+
+               <a href="">Features</a>
+
+               <a href="">Pricing</a>
+
+               <a href="">Resources</a>
+
+               <hr class="border-neutral-grayish-violet h-[1px] w-full md:border-none">
+
+               <a href="">Login</a>
+
+               <a class="bg-primary-cyan w-full py-3 text-center rounded-full md:max-w-[130px] md:text-white md:py-2 md:font-normal"
+                  href="">Sign up</a>
+
+            </div>
+
+         </div>
+
+      </div>
+
+   </header>
+
+   <!-- Hero -->
+   <section class="pb-20 text-center md:pt-16">
+
+      <div class="sm:grid sm:grid-cols-[55%_45%] sm:items-center sm:max-w-6xl sm:mx-auto">
+
+         <div
+            class="bg-no-repeat bg-hero min-h-[350px] bg-cover mt-6 mb-12 bg-hero-img xs:min-h-[400px] sm:min-h-[250px] sm:col-start-2 sm:row-start-1 md:min-h-[500px] md:mb-0 md:mt-0">
+         </div>
+
+         <div class="px-6 sm:col-start-1 sm:row-start-1 sm:text-left sm:max-w-2xl">
+            <h1 class="text-4xl font-bold font-poppins text-neutral-very-dark-violet md:text-7xl md:leading-tight">
+               More than just shorter links
+            </h1>
+
+            <p class="font-poppins text-gray-400 font-medium mt-2 max-w-md sm:leading-relaxed md:text-lg">
+               Build your brand's recognition and get detailed insights
+               on how your links are performing.
+            </p>
+
+            <a class="bg-primary-cyan inline-block text-white font-semibold px-12 py-3 rounded-full mx-auto  mt-6"
+               href="">
+               Get started
+            </a>
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- Link Shorter -->
+   <section class="px-6 relative">
+
+      <div class="sm:max-w-6xl sm:mx-auto">
+         <div class="h-1/2 absolute bottom-0 left-0 right-0 -z-10 bg-slate-100">
+         </div>
+         <form
+            class="bg-primary-dark-violet py-6 px-5 rounded-lg flex flex-col gap-y-4 bg-shorten bg-contain bg-no-repeat bg-shorten-img  md:flex md:flex-row md:gap-x-4 md:py-8 md:bg-shorten-desktop md:bg-cover md:bg-shorten-img-desktop">
+            <input class="h-12 px-4 rounded grow" type="text" placeholder="Shorten a link here...">
+            <button class="h-12 text-center bg-primary-cyan text-white font-semibold rounded md:min-w-[200px]">
+               Shorten It!
+            </button>
+         </form>
+      </div>
+
+   </section>
+
+   <!-- Advanced Statistics -->
+   <section class="px-6 py-20 text-center bg-slate-100 lg:pb-48">
+
+      <div class="sm:max-w-6xl sm:mx-auto">
+
+         <h2 class="text-3xl font-bold text-primary-dark-violet font-poppins mb-4 lg:text-4xl">
+            Advanced Statistics
+         </h2>
+
+         <p class="font-poppins text-gray-400 font-medium mb-12 max-w-lg mx-auto">
+            Track how your links are performing across the web with our
+            advanced statistics dashboard.
+         </p>
+
+         <div class="max-w-sm mx-auto grid lg:max-w-none lg:flex lg:text-left">
+
+            <div class="bg-white relative px-8 mt-12 pt-[1.5rem] pb-8">
+
+               <div
+                  class="bg-primary-dark-violet absolute -translate-y-[calc(50%_+_2rem)] left-1/2 -translate-x-1/2 mx-auto w-20 aspect-square rounded-full grid place-items-center lg:translate-x-6 lg:left-0">
+                  <img class="" src="/images/icon-brand-recognition.svg" alt="">
+               </div>
+
+               <h3 class="mt-10 font-poppins text-2xl font-semibold">Brand Recognition</h3>
+
+               <p class="text-gray-400 font-medium mt-3">
+                  Boost your brand recognition with each click. Generic links don`t
+                  mean a thing. Branded links help instil confidence in your content.
+               </p>
+
+            </div>
+
+            <hr class="bg-primary-cyan w-2 h-16 mx-auto lg:w-20 lg:h-2 lg:self-center lg:relative lg:top-10">
+
+            <div class="bg-white relative px-8 mt-12 pt-[1.5rem] pb-8 lg:relative lg:top-10">
+
+               <div
+                  class="bg-primary-dark-violet absolute -translate-y-[calc(50%_+_2rem)] left-1/2 -translate-x-1/2 mx-auto w-20 aspect-square rounded-full grid place-items-center lg:translate-x-6 lg:left-0">
+                  <img class="" src=" /images/icon-detailed-records.svg" alt="">
+               </div>
+
+               <h3 class="mt-10 font-poppins text-2xl font-semibold">
+                  Detailed Records
+               </h3>
+
+               <p class="text-gray-400 font-medium mt-3">
+                  Gain insights into who is clicking your links. Knowing when and where
+                  people engage with your content helps inform better decisions.
+               </p>
+
+            </div>
+
+            <hr class="bg-primary-cyan w-2 h-16 mx-auto lg:w-20 lg:h-2 lg:self-center lg:relative lg:top-10">
+
+            <div class="bg-white relative px-8 mt-12 pt-[1.5rem] pb-8 lg:relative lg:top-20">
+
+               <div
+                  class="bg-primary-dark-violet absolute -translate-y-[calc(50%_+_2rem)] left-1/2 -translate-x-1/2 mx-auto w-20 aspect-square rounded-full grid place-items-center lg:translate-x-6 lg:left-0">
+                  <img class="" src="/images/icon-fully-customizable.svg" alt="">
+               </div>
+
+               <h3 class="mt-10 font-poppins text-2xl font-semibold">
+                  Fully Customizable
+               </h3>
+
+               <p class="text-gray-400 font-medium mt-3">
+                  Improve brand awareness and content discoverability through customizable
+                  links, supercharging audience engagement.
+               </p>
+
+            </div>
+
+         </div>
+
+      </div>
+
+   </section>
+
+   <!-- Boost your links today -->
+   <section
+      class="text-center bg-boost bg-no-repeat bg-primary-dark-violet py-16 px-6 md:bg-boost-desktop md:bg-boost-img-desktop">
+
+      <h2 class="text-white text-2xl font-poppins font-bold md:text-3xl lg:text-4xl">
+         Boost your links today
+      </h2>
+      <a class="bg-primary-cyan inline-block text-white font-semibold px-12 py-3 rounded-full mx-auto  mt-6" href="">
+         Get started
+      </a>
+
+   </section>
+
+   <footer class=" bg-neutral-very-dark-violet text-white px-6 py-12 font-poppins">
+
+      <div class="text-center grid gap-y-8 md:grid-cols-[auto_1fr] md:max-w-6xl md:mx-auto md:text-left">
+
+         <img class="h-8 mx-auto mb-4 md:mx-0 md:mr-4 lg:mr-12" src="./images/logo-white.svg" alt="">
+
+         <div class="grid gap-y-12 md:grid-cols-4 md:justify-self-end md:gap-x-6">
+
+            <div>
+               <h2 class="font-semibold mb-4">Features</h2>
+               <ul class="flex flex-col gap-y-3 text-gray-400">
+                  <li><a href="">Link Shortening</a></li>
+                  <li><a href="">Branded Links</a></li>
+                  <li><a href="">Analytics</a></li>
+               </ul>
+            </div>
+
+            <div>
+               <h2 class="font-semibold mb-4">Features</h2>
+               <ul class="flex flex-col gap-y-3 text-gray-400">
+                  <li><a href="">Blog</a></li>
+                  <li><a href="">Developers</a></li>
+                  <li><a href="">Support</a></li>
+               </ul>
+            </div>
+
+            <div>
+               <h2 class="font-semibold mb-4">Features</h2>
+               <ul class="flex flex-col gap-y-3 text-gray-400">
+                  <li><a href="">About</a></li>
+                  <li><a href="">Our Team</a></li>
+                  <li><a href="">Careers</a></li>
+                  <li><a href="">Contact</a></li>
+               </ul>
+            </div>
+
+            <div class="text-white flex flex-col gap-y-4 lg:flex-row gap-x-6 mx-auto md:mx-0">
+               <a href="https://facebook.com">
+                  <i class="fa-brands fa-facebook text-3xl"></i>
+               </a>
+               <a href="https://twitter.com">
+                  <i class="fa-brands fa-twitter text-3xl"></i>
+               </a>
+               <a href="https://pinterest.com">
+                  <i class="fa-brands fa-pinterest text-3xl"></i>
+               </a>
+               <a href="https://instagram.com">
+                  <i class="fa-brands fa-instagram text-3xl"></i>
+               </a>
+            </div>
+
+         </div>
+
+      </div>
+
+   </footer>
+
+   <div class="text-center font-poppins px-6 py-4">
+      <p class="text-lg">
+         Challenge by
+         <a class="text-blue-600 underline" href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+            Frontend Mentor
+         </a>.
+      </p>
+      <p class="text-lg">
+         Coded by
+         <a class="text-blue-600 underline" href="#">Programm1ng</a>.
+      </p>
+   </div>
+</body>
+
+</html>
