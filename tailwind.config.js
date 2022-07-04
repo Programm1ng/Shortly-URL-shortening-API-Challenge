@@ -13,12 +13,14 @@ module.exports = {
     extend: {
       backgroundPosition: {
         'hero-img': "left 32px center",
+        'hero-img-lg': "right -200px center;",
+        'hero-img-xl': "right -40px bottom 45%;",
         'shorten-img': "left 80px center",
         'shorten-img-desktop': "left",
         'boost-img-desktop': "center"
       },
       backgroundImage: {
-        'hero': "url(/public/images/illustration-working.svg)",
+        'hero': "url(/public/images/illustration-working-background.svg)",
         'shorten': "url(/public/images/bg-shorten-mobile.svg)",
         'shorten-desktop': "url(/public/images/bg-shorten-desktop.svg)",
         'boost': "url(/public/images/bg-boost-mobile.svg)",
