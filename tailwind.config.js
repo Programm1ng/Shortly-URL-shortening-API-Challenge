@@ -9,12 +9,14 @@ module.exports = {
     screens: {
       'xs': '525px',
       ...defaultTheme.screens,
+      '2xl': '1300px'
     },
     extend: {
       backgroundPosition: {
         'hero-img': "left 32px center",
         'hero-img-lg': "right -200px center;",
-        'hero-img-xl': "right -40px bottom 45%;",
+        'hero-img-xl': "right -100px bottom 45%;",
+        'hero-img-2xl': "left calc(50% + 400px) bottom 45%;",
         'shorten-img': "left 80px center",
         'shorten-img-desktop': "left",
         'boost-img-desktop': "center"
@@ -37,6 +39,7 @@ module.exports = {
         'neutral-grayish-violet': 'hsl(257, 7%, 63%)',
         'neutral-dark-blue': 'hsl(255, 11%, 22%)',
         'neutral-very-dark-violet': 'hsl(260, 8%, 14%)',
+        'transparent-black': '#000000B3'
       },
     },
   },

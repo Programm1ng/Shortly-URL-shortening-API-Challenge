@@ -68,7 +68,7 @@
 
    <!-- Hero -->
    <section
-      class="pb-20 text-center md:pt-16 lg:relative lg:bg-hero lg:bg-hero-img-lg lg:bg-no-repeat xl:bg-hero-img-xl">
+      class="pb-20 text-center md:pt-16 lg:relative lg:bg-hero lg:bg-hero-img-lg lg:bg-no-repeat xl:bg-hero-img-xl 2xl:bg-hero-img-2xl">
 
       <div class="max-w-6xl mx-auto sm:grid sm:grid-cols-2 sm:items-center lg:my-16">
 
@@ -98,18 +98,27 @@
    </section>
 
    <!-- Link Shorter -->
-   <section class="px-6 relative">
+   <section id="url-shortener-section" class="px-6 relative">
 
-      <div class="sm:max-w-6xl sm:mx-auto">
-         <div class="h-1/2 absolute bottom-0 left-0 right-0 -z-10 bg-slate-100">
-         </div>
-         <form
+      <div id="url-shortener-wrapper" class="sm:max-w-6xl sm:mx-auto">
+
+         <div class="h-1/2 absolute bottom-0 left-0 right-0 -z-10 bg-slate-100"></div>
+
+         <form id="url-shortener-form"
             class="bg-primary-dark-violet py-6 px-5 rounded-lg flex flex-col gap-y-4 bg-shorten bg-contain bg-no-repeat bg-shorten-img  md:flex md:flex-row md:gap-x-4 md:py-8 md:bg-shorten-desktop md:bg-cover md:bg-shorten-img-desktop">
-            <input class="h-12 px-4 rounded grow" type="text" placeholder="Shorten a link here...">
-            <button class="h-12 text-center bg-primary-cyan text-white font-semibold rounded md:min-w-[200px]">
+
+            <input id="url-shortener-input" class="h-12 px-4 rounded grow" type="text"
+               placeholder="Shorten a link here...">
+
+            <button id="url-shortener-button"
+               class="h-12 text-center bg-primary-cyan text-white font-semibold rounded md:min-w-[200px]">
                Shorten It!
             </button>
+
          </form>
+
+      </div>
+
       </div>
 
    </section>
