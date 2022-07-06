@@ -1,17 +1,15 @@
 export default class UrlShortener {
 
-  constructor() {
+  constructor(urlShortenerApi) {
+    // Save API Handler
+    this.urlShortenerApi = urlShortenerApi;
     // Get all necessary elements
     this.urlShortenerForm = document.querySelector('#url-shortener-form');
     this.urlShortenerInput = document.querySelector('#url-shortener-input');
     this.urlShortenerButton = document.querySelector('#url-shortener-button');
     this.urlShortenerWrapper = document.querySelector('#url-shortener-wrapper');
     this.urlShortenerSection = document.querySelector('#url-shortener-section');
-
-    // Make sure all elements are accessible
-    if (this.urlShortenerForm !== null || this.urlShortenerInput !== null || this.urlShortenerButton !== null) {
-      this.events();
-    }
+    this.events();
   }
 
   /**
@@ -23,9 +21,9 @@ export default class UrlShortener {
    * @since 1.0.0
    * 
    */
-  events() {
+  events = () => {
     this.urlShortenerForm.addEventListener('submit', function (e) { e.preventDefault() });
-    this.urlShortenerButton.addEventListener('click', this.handleButtonClick.bind(this));
+    this.urlShortenerButton.addEventListener('click', this.handleButtonClick);
   }
 
   /**
@@ -36,7 +34,7 @@ export default class UrlShortener {
   * @since 1.0.0
   * 
   */
-  handleButtonClick() {
+  handleButtonClick = async () => {
     // Get string from input
     let str = this.urlShortenerInput.value;
 
@@ -64,7 +62,7 @@ export default class UrlShortener {
   * @since 1.0.0
   * 
   */
-  isValidUrl(str) {
+  isValidUrl = (str) => {
     let pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
       '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
@@ -82,46 +80,57 @@ export default class UrlShortener {
   * @since 1.0.0
   * 
   */
-  requestApi(str) {
+  requestApi = async (url) => {
     const requestOptions = {
       method: "GET",
       redirect: "follow"
     };
 
-    fetch(`https://api.shrtco.de/v2/shorten?url=${str}`, requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.ok == true) {
-          this.showResults(result).call(this);
-        } else {
-          switch (result.error_code) {
-            case 1:
-              this.showErrorMessage('No URL specified.');
-              break;
-            case 2:
-              this.showErrorMessage('Invalid URL submitted.');
-              break;
-            case 3:
-              this.showErrorMessage('Rate limit reached. Wait a second and try again.');
-              break;
-            case 4:
-              this.showErrorMessage('IP-Address has been blocked.');
-              break;
-            case 5:
-              this.showErrorMessage('Shortcode slug is already taken / in use.');
-              break;
-            case 10:
-              this.showErrorMessage('Trying to shorten a disallowed link.');
-              break;
-            default:
-              this.showErrorMessage('Unknown error, please try again later.');
-              break;
-          }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const data = await this.urlShortenerApi.short(url, requestOptions);
+      this.handleResponse(data);
+    } catch (e) {
+      this.showErrorMessage('An error occurred, please try again later.');
+    }
+  }
+
+  /**
+  * Handles API Data
+  *
+  * Handles the data of the api request and shows the 
+  * results or if an error occurred the error messages
+  *
+  * @since 1.0.0
+  * 
+  */
+  handleResponse = async (data) => {
+    if (data.ok == true) {
+      this.showResults(data);
+    } else {
+      switch (data.error_code) {
+        case 1:
+          this.showErrorMessage('No URL specified.');
+          break;
+        case 2:
+          this.showErrorMessage('Invalid URL submitted.');
+          break;
+        case 3:
+          this.showErrorMessage('Rate limit reached. Wait a second and try again.');
+          break;
+        case 4:
+          this.showErrorMessage('IP-Address has been blocked.');
+          break;
+        case 5:
+          this.showErrorMessage('Shortcode slug is already taken / in use.');
+          break;
+        case 10:
+          this.showErrorMessage('Trying to shorten a disallowed link.');
+          break;
+        default:
+          this.showErrorMessage('Unknown error, please try again later.');
+          break;
+      }
+    }
   }
 
   /**
@@ -132,7 +141,7 @@ export default class UrlShortener {
   * @since 1.0.0
   * 
   */
-  removeErrorMessageIfNecessary() {
+  removeErrorMessageIfNecessary = () => {
     const errorMessage = document.querySelector('#url-shortener-error-message-wrapper');
 
     if (errorMessage !== null) errorMessage.remove();
@@ -147,7 +156,7 @@ export default class UrlShortener {
   * @since 1.0.0
   * 
   */
-  showErrorMessage(errorMessage) {
+  showErrorMessage = (errorMessage) => {
     // Remove existing error message if one exists
     this.removeErrorMessageIfNecessary();
 
@@ -182,7 +191,7 @@ export default class UrlShortener {
   * @since 1.0.0
   * 
   */
-  showResults(result) {
+  showResults = (result) => {
     document.body.classList.add('overflow-hidden');
 
     let resultsWrapper = document.createElement('div');
@@ -300,7 +309,15 @@ export default class UrlShortener {
     );
   }
 
-  copyLinkToClipboard(url) {
+  /**
+  * Copies Link to Clipboard
+  *
+  * Just copies Link to Clipboard with navigator.clipboard.writeText
+  *
+  * @since 1.0.0
+  * 
+  */
+  copyLinkToClipboard = (url) => {
     navigator.clipboard.writeText(url).then(function () {
       /* clipboard successfully set */
       let button = document.querySelector('#results-copy-button');
@@ -308,11 +325,19 @@ export default class UrlShortener {
       button.classList.add('bg-emerald-500');
       button.textContent = 'Copied';
     }, function () {
-      /* clipboard write failed */
+      button.textContent = "Failed to copy";
     });
   }
 
-  closeResults() {
+  /**
+  * Closes Results View
+  *
+  * Closes the results view, if the user clicks the close button
+  *
+  * @since 1.0.0
+  * 
+  */
+  closeResults = () => {
     let results = document.querySelector('#results');
 
     if (results !== null)
@@ -321,5 +346,3 @@ export default class UrlShortener {
     document.body.classList.remove('overflow-hidden');
   }
 }
-
-// module.exports.UrlShortener = UrlShortener;

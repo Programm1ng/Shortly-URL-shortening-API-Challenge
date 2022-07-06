@@ -1,7 +1,6 @@
 const config = {
   verbose: true,
-  testEnvironment: 'jest-environment-node',
-  transform: {}
+  "testEnvironment": "jsdom"
 };
 
 module.exports = config;
